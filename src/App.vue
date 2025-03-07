@@ -91,7 +91,7 @@ const updateMark = (user: User, value: string) => {
           <td>
             <input
               :value="getFormattedMark(user)"
-              @input="(e) => updateMark(user, e.target?.value || '')"
+              @input="(e) => updateMark(user, (e.target as HTMLInputElement).value || '')"
               placeholder="Метка"
             />
           </td>
