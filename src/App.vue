@@ -5,10 +5,9 @@ interface User {
   id: number;
   mark: Array<{ text: string }>;
   type: string;
-  login: string;
-  password: string;
+  login: any;
+  password: any;
   showPassword: boolean;
-  isError: boolean;
 }
 
 const usersStore = useUsersStore();
