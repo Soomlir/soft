@@ -3,12 +3,11 @@ import { ref, watch } from "vue";
 
 interface User {
   id: number;
-  mark: any;
+  mark: Array<{ text: string }>;
   type: string;
-  login: string;
-  password: string;
+  login: any;
+  password: any;
   showPassword: boolean;
-  isError: boolean
 }
 
 export const useUsersStore = defineStore("usersStore", () => {
