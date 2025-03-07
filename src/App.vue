@@ -3,11 +3,12 @@ import { useUsersStore } from "./stores/UsersStore.ts";
 
 interface User {
   id: number;
-  mark: Array<{ text: string }>;
+  mark: { text: string }[];
   type: string;
   login: any;
   password: any;
   showPassword: boolean;
+  isError?: boolean; 
 }
 
 const usersStore = useUsersStore();

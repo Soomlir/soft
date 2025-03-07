@@ -3,12 +3,14 @@ import { ref, watch } from "vue";
 
 interface User {
   id: number;
-  mark: Array<{ text: string }>;
+  mark: { text: string }[];
   type: string;
   login: any;
   password: any;
   showPassword: boolean;
+  isError?: boolean; 
 }
+
 
 export const useUsersStore = defineStore("usersStore", () => {
   const usersList = ref<User[]>([]);
