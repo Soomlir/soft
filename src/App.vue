@@ -34,11 +34,11 @@ const deleteUser = (id: number) => {
   usersStore.removeUser(id);
 };
 
-const isLoginError = (login: string) => {
+const isLoginError = (login: string | null) => {
   return !login || login.length < 4;
 };
 
-const isPasswordError = (password: string) => {
+const isPasswordError = (password: string | null) => {
   return !password || password.length < 4;
 };
 
