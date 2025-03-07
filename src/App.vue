@@ -5,8 +5,8 @@ interface User {
   id: number;
   mark: { text: string }[];
   type: string;
-  login: any;
-  password: any;
+  login: string | null;
+  password: string | null;
   showPassword: boolean;
   isError?: boolean; 
 }

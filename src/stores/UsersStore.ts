@@ -8,7 +8,6 @@ interface User {
   login: any;
   password: any;
   showPassword: boolean;
-  isError?: boolean; 
 }
 
 
@@ -37,7 +36,6 @@ export const useUsersStore = defineStore("usersStore", () => {
           login: "admin",
           password: "123123",
           showPassword: false,
-          isError: false,
         },
         {
           id: 2,
@@ -46,7 +44,6 @@ export const useUsersStore = defineStore("usersStore", () => {
           login: "user",
           password: "777",
           showPassword: false,
-          isError: false,
         },
       ];
       saveUsersToLocalStorage();
