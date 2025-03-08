@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { useUsersStore } from "./stores/UsersStore.ts";
 
-interface User {
+type User = {
   id: number;
   mark: { text: string }[];
   type: string;
-  login: string | null;
-  password: string | null;
+  login: string;
+  password: string;
   showPassword: boolean;
-  isError?: boolean; 
-}
+};
 
 const usersStore = useUsersStore();
 
@@ -42,16 +41,20 @@ const isPasswordError = (password: string | null) => {
   return !password || password.length < 4;
 };
 
-const updateField = (index: number, field: any, value: string) => {
-  usersStore.usersList[index][field] = value;
-  console.log(usersStore.usersList[index][field]);
+const updateLogin = (index: number, value: string) => {
+  usersStore.usersList[index]['login'] = value;
+  localStorage.setItem("usersList7", JSON.stringify(usersStore.usersList));
+};
+
+const updatePassword = (index: number, value: string) => {
+  usersStore.usersList[index]['login'] = value;
   localStorage.setItem("usersList7", JSON.stringify(usersStore.usersList));
 };
 
 const updateType = (index: number, value: string) => {
   usersStore.usersList[index]["type"] = value;
   if (usersStore.usersList[index]["type"] == "ldap") {
-    usersStore.usersList[index]["password"] = null;
+    usersStore.usersList[index]["password"] = '';
   }
   localStorage.setItem("usersList7", JSON.stringify(usersStore.usersList));
 };
@@ -106,7 +109,7 @@ const updateMark = (user: User, value: string) => {
               type="text"
               v-model="user.login"
               placeholder="Login"
-              @blur="updateField(index, 'login', user.login)"
+              @blur="updateLogin(index, user.login)"
               maxlength="100"
               :class="{ 'error-field': isLoginError(user.login) }"
             />
@@ -116,7 +119,7 @@ const updateMark = (user: User, value: string) => {
               :type="user.showPassword ? 'text' : 'password'"
               v-model="user.password"
               placeholder="Password"
-              @blur="updateField(index, 'password', user.password)"
+              @blur="updatePassword(index, user.password)"
               maxlength="100"
               :class="{ 'error-field': isPasswordError(user.password) }"
             />
